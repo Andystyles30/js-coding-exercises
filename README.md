@@ -28,7 +28,7 @@ Your terminal should respond with the version of Node you have installed. It wil
 
     v14.5.0
 
-[This getting started video](https://storage.googleapis.com/tech-returners-course/JavaScript_Challenges/intro_to_js_challenges.mp4) walks you through the below instructions for how to get started with this repository.
+Once you've got Node installed you can make a start - before you do please make sure to watch the [getting started video](https://storage.googleapis.com/your-return-to-tech/assessment-centre/assessment_exercises_guidance.mp4) as it walks you through instructions for getting started and the first exercise.
 
 ### Completing the challenges
 
