@@ -15,14 +15,16 @@ function addVAT(originalPrice, vatRate) {
   let vat = ( originalPrice / 100 ) * vatRate;
   let result = originalPrice + vat;
   if (result % 1 !== 0)
-    result = parseFloat(result.toFixed(2));
+    result = + (result.toFixed(2));
   return result;
 }
 
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
-  // Add your code here!
+  let savings = (originalPrice / 100) * reduction;
+  let result = +(originalPrice - savings).toFixed(2);
+  return result;
 }
 
 function getMiddleCharacter(str) {
