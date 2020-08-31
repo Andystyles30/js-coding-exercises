@@ -12,7 +12,7 @@ function generateInitials(firstName, lastName) {
 function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  let vat = ( originalPrice / 100 ) * vatRate;
+  let vat = (originalPrice / 100) * vatRate;
   let result = originalPrice + vat;
   if (result % 1 !== 0)
     result = + (result.toFixed(2));
@@ -31,12 +31,12 @@ function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
   let position;
   let length;
-  if ( str.length % 2 == 1 ) {
-      position = str.length / 2;
-      length = 1;
+  if (str.length % 2 == 1) {
+    position = str.length / 2;
+    length = 1;
   } else {
-      position = str.length / 2 - 1;
-      length = 2;
+    position = str.length / 2 - 1;
+    length = 2;
   }
   return str.substring(position, position + length);
 }
