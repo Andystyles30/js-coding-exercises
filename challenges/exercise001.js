@@ -49,7 +49,7 @@ function reverseWord(word) {
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
   let reversedWords = [];
-  for (word in words) {
+  for (let word in words) {
     reversedWords.push(reverseWord(words[word]));
   }
   return reversedWords;
@@ -58,7 +58,7 @@ function reverseAllWords(words) {
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
   let linuxCount = 0;
-  for (user in users) {
+  for (let user in users) {
     if (users[user].type == "Linux") {
       linuxCount++
     }
@@ -68,7 +68,7 @@ function countLinuxUsers(users) {
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  meanScore = +(scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2);
+  let meanScore = +(scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2);
   return meanScore;
 }
 
