@@ -1,9 +1,8 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
-  let smallNums = [];
-  nums.forEach(function (number) {
+  const smallNums = nums.filter(function (number) {
     if (number < 1) 
-      smallNums.push(number);
+      return true;
   });
   return smallNums;
 }
@@ -11,52 +10,44 @@ function findSmallNums(nums) {
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
-  let namesBeginningWith = [];
-  names.forEach(function (name) {
+  const namesBeginningWith = names.filter(function (name) {
     if (name.charAt(0).toUpperCase() === char) 
-      namesBeginningWith.push(name);
+      return true;
   });
   return namesBeginningWith;
 }
 
 function findVerbs(words) {
   if (!words) throw new Error("words is required");
-  let verbs = [];
-  words.forEach(function (word) {
+  const verbs = words.filter(function (word) {
     if (word.substring(0, 3) === "to ")
-      verbs.push(word);
+      return true;
   });
   return verbs;
 }
 
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
-  let integers = [];
-  nums.forEach(function (num) {
+  const integers = nums.filter(function (num) {
     if (Number.isInteger(num))
-      integers.push(num);
+      return true;
   });
   return integers;
 }
 
 function getCities(users) {
   if (!users) throw new Error("users is required");
-  let cities = []
-  users.forEach(function (user) {
-      cities.push(user.data.city.displayName);
+  const cities = users.map(function (user) {
+      return user.data.city.displayName;
   });
   return cities;
 }
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  let squareRoots = [];
-  let sqrt = 0;
-  nums.forEach(function (number) {
-    sqrt = Math.sqrt(number);
-    if (sqrt % 1 !== 0) 
-      sqrt = parseFloat(sqrt.toFixed(2));
-    squareRoots.push(sqrt);
+  const squareRoots = nums.map(function (number) {
+    const sqrt = Math.sqrt(number);
+    return (sqrt % 1 !== 0) ? parseFloat(sqrt.toFixed(2)): sqrt;
   });
   return squareRoots;
 }
@@ -64,20 +55,17 @@ function getSquareRoots(nums) {
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  let sentenceContained = [];
-  sentences.forEach(function (sentence) {
-    if (sentence.toUpperCase().indexOf(str.toUpperCase()) >= 0) {
-      sentenceContained.push(sentence);
-    }
+  const sentenceContained = sentences.filter(function (sentence) {
+    if (sentence.toUpperCase().indexOf(str.toUpperCase()) >= 0)
+      return true;
   });
   return sentenceContained;
 }
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  let longestSides = [];
-  triangles.forEach(function (triangle) {
-    longestSides.push(Math.max.apply(null, triangle));
+  const longestSides = triangles.map(function (triangle) {
+    return Math.max.apply(null, triangle);
   });
   return longestSides;
 }
