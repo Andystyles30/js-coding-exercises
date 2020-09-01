@@ -34,12 +34,23 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  // Your code here!
+  let total = 0;
+  arrs.forEach(element => total += element.reduce((a, b) => a + b, 0));
+  return total;
 };
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+  const arrLen = arr.length - 1;
+  const numbers = arr.map((item, index) => {
+    if (index === 0)
+      return arr[arrLen];
+    else if (index === arrLen)
+      return arr[0];
+    else
+      return item;
+  });
+  return numbers;
 };
 
 const findNeedle = (haystack, searchTerm) => {
