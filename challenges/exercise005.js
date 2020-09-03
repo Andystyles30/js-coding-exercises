@@ -9,14 +9,12 @@ const findNextNumber = (nums, n) => {
 };
 
 const count1sand0s = str => {
-  var sum = 0;
-  for (num in str) {
-    sum += Number(str[num]);
-  }
-  return {
-    1 : sum,
-    0 : str.length - sum
+  const zeroOnes = {
+    1: 0,
+    0: 0
   };
+  str.split("").forEach(d => zeroOnes[d] = !zeroOnes[d] ? 1 : zeroOnes[d] + 1);
+  return zeroOnes;
 };
 
 const reverseNumber = n => {
@@ -56,12 +54,7 @@ const arrShift = arr => {
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  strContains = false;
-  Object.values(haystack).forEach(val => {
-    if (val.toString().toUpperCase().includes(searchTerm.toUpperCase()))
-      strContains = true;
-  });
-  return strContains;
+  return Object.values(haystack).some(val => val.toString().toUpperCase().includes(searchTerm.toUpperCase()) === true);
 };
 
 const getWordFrequencies = str => {
