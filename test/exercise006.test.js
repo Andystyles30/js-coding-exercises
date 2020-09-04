@@ -72,3 +72,18 @@ const {
       expect(getComplementaryDNA("TACG")).toBe("ATGC");
     });
   });
+
+  describe("isItPrime", () => {
+    test("it returns true for prime numbers", () => {
+      expect(isItPrime(2)).toBe(true);
+      expect(isItPrime(3)).toBe(true);
+      expect(isItPrime(5)).toBe(true);
+      expect(isItPrime(7)).toBe(true);
+    });
+    test("it returns false for non prime numbers", () => {
+      expect(isItPrime(1)).toBe(false);
+      expect(isItPrime(4)).toBe(false);
+      expect(isItPrime(8)).toBe(false);
+      expect(isItPrime(9)).toBe(false);
+    });
+  });
