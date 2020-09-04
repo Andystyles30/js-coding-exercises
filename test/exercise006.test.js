@@ -20,14 +20,36 @@ const {
       expect(sumMultiples([1.00])).toBe(0);
     });
 
-    test("it throws an exception if arr argument not passed to function", () => {
+    test("it throws an exception if arr argument not passed to function or is not an array", () => {
       expect(() => {
         sumMultiples();
       }).toThrow("arr is required");
+
+      expect(() => {
+        sumMultiples("foo");        
+      }).toThrow("an Array is required");
+
+      expect(() => {
+        sumMultiples(1);        
+      }).toThrow("an Array is required");
     });
 
     test("it works with negative numbers", () => {
       expect(sumMultiples([1,3,-5])).toBe(-2);
     });
   });
-  
+
+  describe("isValidDNA", () => {
+    test("it returns false if it is not valid DNA", () => {
+      expect(isValidDNA("CGTAP")).toBe(false);
+      expect(isValidDNA("AKNYEHD")).toBe(false);
+      expect(isValidDNA("JSJHS")).toBe(false);
+    });
+
+    test("it returns true if it is valid DNA", () => {
+      expect(isValidDNA("CGTA")).toBe(true);
+      expect(isValidDNA("ATGC")).toBe(true);
+      expect(isValidDNA("A")).toBe(true);
+      expect(isValidDNA("T")).toBe(true);
+    });
+  });
