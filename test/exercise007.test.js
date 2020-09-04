@@ -63,3 +63,14 @@ const {
       expect(hexToRGB("#FF1133")).toEqual("rgb(255,17,51)");
     });
   });
+
+  describe("findWinner", () => {
+    test("returns correct winner given the board results in array of arrays format", () => {
+      const board = [
+        ["X", "0", null],
+        ["X", null, "0"],
+        ["X", null, "0"]
+      ];
+      expect(findWinner(board)).toEqual("X");
+    });
+  });

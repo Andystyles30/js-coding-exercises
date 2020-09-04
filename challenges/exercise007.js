@@ -99,6 +99,48 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+  let winningCombos = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+    [1, 5, 9],
+    [3, 5, 7]
+  ];
+  let count = 1;
+  let positions = {
+    "x" : [],
+    "o" : []
+  };
+
+  board.forEach(row => {
+    row.forEach(col => {
+      if (col === "X") 
+        positions.x.push(count);
+      else if (col === "0")
+        positions.o.push(count);  
+      count++;
+    })
+  })
+
+  let winner = null;
+  for (let combo in winningCombos) {  
+    // console.log(winningCombos[combo].join(", "))
+    if (winningCombos[combo].join(", ") === positions.o.join(", ")) {
+      // console.log("0 winner")
+      // console.log(winningCombos[set].join(", ") === positions.o.join(", "));
+      // console.log(positions.o.join(", "), winningCombos[set].join(", "));
+      winner = "0";
+    } else if (winningCombos[combo].join(", ") === positions.x.join(", ")) {
+      // console.log("X winner") 
+      // console.log(winningCombos[set].join(", ") === positions.x.join(", "));
+      // console.log(positions.x.join(", "), winningCombos[set].join(", "));
+      winner = "X";
+    }
+  }
+  return winner;
 };
 
 module.exports = {
