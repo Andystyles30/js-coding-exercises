@@ -88,3 +88,23 @@ const {
       expect(isItPrime(9)).toBe(false);
     });
   });
+
+  describe("createMatrix", () => {
+    test("it returns the expected array of n arrays", () => {
+      expect(
+        createMatrix(3, "foo")
+      ).toEqual([
+        ["foo", "foo", "foo"],
+        ["foo", "foo", "foo"],
+        ["foo", "foo", "foo"]
+      ]);
+    });
+    test("it returns the expected array of n arrays", () => {
+      expect(
+        createMatrix(2, "andy")
+      ).toEqual([
+        ["andy", "andy"],
+        ["andy", "andy"]
+      ]);
+    });
+  });

@@ -45,7 +45,7 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
-  for(let i = 2; i < n; i++) {
+  for (let i = 2; i < n; i++) {
     if(n % i === 0) {
         return false;
     }
@@ -67,6 +67,14 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+  result = [];
+  for (let i = 0; i < n; i++) {
+    result[i] = [];
+    for (let f = 0; f < n; f++) {
+      result[i].push(fill);
+    }
+  }  
+  return result;
 };
 
 /**
