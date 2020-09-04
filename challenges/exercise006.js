@@ -30,10 +30,10 @@ const isValidDNA = str => {
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
   const dnaPairs = {
-    "A" : "T",
-    "C" : "G",
-    "T" : "A",
-    "G" : "C"
+    "A": "T",
+    "C": "G",
+    "T": "A",
+    "G": "C"
   }
   return str.split("").map(letter => dnaPairs[letter]).join("");
 };
@@ -46,8 +46,8 @@ const getComplementaryDNA = str => {
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
   for (let i = 2; i < n; i++) {
-    if(n % i === 0) {
-        return false;
+    if (n % i === 0) {
+      return false;
     }
   }
   return n > 1;
@@ -73,7 +73,7 @@ const createMatrix = (n, fill) => {
     for (let f = 0; f < n; f++) {
       result[i].push(fill);
     }
-  }  
+  }
   return result;
 };
 
@@ -92,7 +92,7 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
-  const total = staff.reduce( (total, staff) => total += staff.rota.find(element => element === day) ? 1 : 0, 0);  
+  const total = staff.reduce((total, staff) => total += staff.rota.find(element => element === day) ? 1 : 0, 0);
   return total >= 3;
 };
 

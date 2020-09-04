@@ -1,7 +1,7 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
   const smallNums = nums.filter(function (number) {
-    if (number < 1) 
+    if (number < 1)
       return true;
   });
   return smallNums;
@@ -11,7 +11,7 @@ function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
   const namesBeginningWith = names.filter(function (name) {
-    if (name.charAt(0).toUpperCase() === char) 
+    if (name.charAt(0).toUpperCase() === char)
       return true;
   });
   return namesBeginningWith;
@@ -38,7 +38,7 @@ function getIntegers(nums) {
 function getCities(users) {
   if (!users) throw new Error("users is required");
   const cities = users.map(function (user) {
-      return user.data.city.displayName;
+    return user.data.city.displayName;
   });
   return cities;
 }
@@ -47,7 +47,7 @@ function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
   const squareRoots = nums.map(function (number) {
     const sqrt = Math.sqrt(number);
-    return (sqrt % 1 !== 0) ? parseFloat(sqrt.toFixed(2)): sqrt;
+    return (sqrt % 1 !== 0) ? parseFloat(sqrt.toFixed(2)) : sqrt;
   });
   return squareRoots;
 }

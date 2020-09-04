@@ -2,7 +2,7 @@ const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
   const index = nums.indexOf(n);
-  if(index >= 0 && index < nums.length - 1)
+  if (index >= 0 && index < nums.length - 1)
     return nums[index + 1]
   else
     return null;
@@ -27,7 +27,7 @@ const reverseNumber = n => {
         .reverse()
         .join('')
     ) * Math.sign(n)
-  )  
+  )
 };
 
 const sumArrays = arrs => {

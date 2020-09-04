@@ -4,7 +4,7 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
-  return n.toString().split("").reduce( (total, number) => total += parseFloat(number) , 0);
+  return n.toString().split("").reduce((total, number) => total += parseFloat(number), 0);
 };
 
 /**
@@ -21,7 +21,7 @@ const createRange = (start, end, step) => {
   let result = [];
   for (let number = start; number <= end; number += step) {
     result.push(number !== end ? number : end);
-  }  
+  }
   return result;
 };
 
@@ -59,9 +59,9 @@ const getScreentimeAlertList = (users, date) => {
   if (date === undefined) throw new Error("date is required");
   let usersOverScreentimeLimit = [];
   users.forEach(user => {
-    user.screenTime.forEach( number => {
+    user.screenTime.forEach(number => {
       if (number.date === date) {
-        if (Object.values(number.usage).reduce((total, minutes) => total + minutes) > 100 )
+        if (Object.values(number.usage).reduce((total, minutes) => total + minutes) > 100)
           usersOverScreentimeLimit.push(user.username);
       }
     });
@@ -111,22 +111,22 @@ const findWinner = board => {
   ];
   let count = 1;
   let positions = {
-    "x" : [],
-    "o" : []
+    "x": [],
+    "o": []
   };
 
   board.forEach(row => {
     row.forEach(col => {
-      if (col === "X") 
+      if (col === "X")
         positions.x.push(count);
       else if (col === "0")
-        positions.o.push(count);  
+        positions.o.push(count);
       count++;
     })
   })
 
   let winner = null;
-  for (let combo in winningCombos) {  
+  for (let combo in winningCombos) {
     if (winningCombos[combo].join(", ") === positions.o.join(", ")) {
       winner = "0";
     } else if (winningCombos[combo].join(", ") === positions.x.join(", ")) {
