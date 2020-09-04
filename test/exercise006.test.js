@@ -79,6 +79,7 @@ const {
       expect(isItPrime(3)).toBe(true);
       expect(isItPrime(5)).toBe(true);
       expect(isItPrime(7)).toBe(true);
+      expect(isItPrime(7919)).toBe(true);
     });
     test("it returns false for non prime numbers", () => {
       expect(isItPrime(1)).toBe(false);
