@@ -6,12 +6,7 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  const total = arr.reduce((total, number) => {
-    if (number % 3 === 0 || number % 5 === 0) 
-      return total += number;
-    else
-      return total;
-  }, 0);
+  const total = arr.reduce((total, number) => total = (number % 3 === 0 || number % 5 === 0) ? total + number : total, 0);
   return total;
 };
 
