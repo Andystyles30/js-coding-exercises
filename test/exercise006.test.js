@@ -108,3 +108,24 @@ const {
       ]);
     });
   });
+
+  describe("areWeCovered", () => {
+    test("it returns false if there are no staff at all", () => {
+      expect(areWeCovered([], "Sunday").toBe(false));
+      expect(areWeCovered([], "Monday").toBe(false));
+      expect(areWeCovered([], "Tuesday").toBe(false));
+      expect(areWeCovered([], "Wednesday").toBe(false));
+      expect(areWeCovered([], "Thursday").toBe(false));
+      expect(areWeCovered([], "Friday").toBe(false));
+      expect(areWeCovered([], "Saturday").toBe(false));
+    });
+    test("it returns false if there are staff but < 3 not shceduled to work", () => {
+      const staff = [
+        {name: "john", rota: ["Monday", "Tuesday"]},
+        {name: "paul", rota: ["Monday", "Tuesday"]},
+        {name: "andy", rota: ["Monday", "Tuesday"]},
+        {name: "gary", rota: ["Monday", "Tuesday"]}
+      ]
+      expect(areWeCovered([], "Wednesday").toBe(false));
+    });
+  });
