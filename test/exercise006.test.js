@@ -63,4 +63,12 @@ const {
     test("returns false if empty string", () => {
       expect(isValidDNA("")).toBe(false);
     });
+
+    describe("getComplementaryDNA", () => {
+      test("it returns the correct complimentary DNA", () => {
+        expect(getComplementaryDNA("ACTG")).toBe("TGAC");
+        expect(getComplementaryDNA("CGTA")).toBe("GCAT");
+        expect(getComplementaryDNA("TACG")).toBe("ATGC");
+      });
+    });
   });
