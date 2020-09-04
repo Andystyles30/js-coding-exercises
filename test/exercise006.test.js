@@ -52,4 +52,15 @@ const {
       expect(isValidDNA("A")).toBe(true);
       expect(isValidDNA("T")).toBe(true);
     });
+
+    test("ignores case", () => {
+      expect(isValidDNA("CgTA")).toBe(true);
+      expect(isValidDNA("ATCcag")).toBe(true);
+      expect(isValidDNA("Aa")).toBe(true);
+      expect(isValidDNA("TTtt")).toBe(true);
+    });
+
+    test("returns false if empty string", () => {
+      expect(isValidDNA("")).toBe(false);
+    });
   });

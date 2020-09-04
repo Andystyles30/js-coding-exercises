@@ -18,8 +18,8 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
-  const rgx = new RegExp("^[CGTA]+$");
-  return !str.split("").some(d => !rgx.test(d));  
+  const rgx = new RegExp("^[CGTA]+$", 'i');
+  return str.length === 0 ? false :  !str.split("").some(d => !rgx.test(d));
 };
 
 /**
