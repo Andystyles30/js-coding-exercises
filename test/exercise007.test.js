@@ -2,6 +2,7 @@ const {
     sumDigits,
     createRange,
     getScreentimeAlertList,
+    hexToRGB,
     findWinner
   } = require("../challenges/exercise007");
   
@@ -54,5 +55,11 @@ const {
           },
       ];
       expect(getScreentimeAlertList(users, "2019-05-04")).toEqual([ "beth_1234" ]);
+    });
+  });
+
+  describe("hexToRGB", () => {
+    test("returns correct RGB code object for red, green and blue keys from a hex code string input", () => {
+      expect(hexToRGB("#FF1133")).toEqual("rgb(255,17,51)");
     });
   });
