@@ -92,9 +92,7 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
-  const total = staff.reduce( (total, staff) => 
-    total += staff.rota.find(element => element === day) ? 1 : 0
-  , 0);  
+  const total = staff.reduce( (total, staff) => total += staff.rota.find(element => element === day) ? 1 : 0, 0);  
   return total >= 3;
 };
 
