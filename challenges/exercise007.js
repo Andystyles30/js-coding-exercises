@@ -99,7 +99,7 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
-  let winningCombos = [
+  const winningCombos = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9],
@@ -127,16 +127,9 @@ const findWinner = board => {
 
   let winner = null;
   for (let combo in winningCombos) {  
-    // console.log(winningCombos[combo].join(", "))
     if (winningCombos[combo].join(", ") === positions.o.join(", ")) {
-      // console.log("0 winner")
-      // console.log(winningCombos[set].join(", ") === positions.o.join(", "));
-      // console.log(positions.o.join(", "), winningCombos[set].join(", "));
       winner = "0";
     } else if (winningCombos[combo].join(", ") === positions.x.join(", ")) {
-      // console.log("X winner") 
-      // console.log(winningCombos[set].join(", ") === positions.x.join(", "));
-      // console.log(positions.x.join(", "), winningCombos[set].join(", "));
       winner = "X";
     }
   }
