@@ -57,6 +57,16 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  let usersOverScreentimeLimit = [];
+  users.forEach(user => {
+    user.screenTime.forEach( number => {
+      if (number.date === date) {
+        if (Object.values(number.usage).reduce((total, minutes) => total + minutes) > 100 )
+          usersOverScreentimeLimit.push(user.username);
+      }
+    });
+  });
+  return usersOverScreentimeLimit;
 };
 
 /**
