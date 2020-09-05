@@ -181,6 +181,53 @@ describe("createMatrix", () => {
       ["andy", "andy"]
     ]);
   });
+  test("it returns an empty array if number is 0", () => {
+    expect(
+      createMatrix(0, "andy")
+    ).toEqual([]);
+  });
+  test("it throws an exception if n argument not passed to function or is not an number", () => {
+    expect(() => {
+      createMatrix();
+    }).toThrow("n is required");
+
+    expect(() => {
+      createMatrix(n = ["ATSA"], fill = "andy");
+    }).toThrow("an argument type number is required");
+
+    expect(() => {
+      createMatrix(n = true, fill = "andy");
+    }).toThrow("an argument type number is required");
+
+    expect(() => {
+      createMatrix(n = "ANDY", fill = "andy");
+    }).toThrow("an argument type number is required");
+
+    expect(() => {
+      createMatrix(n = { "DNA" : "ACTG" }, fill = "andy");
+    }).toThrow("an argument type number is required");
+  });
+  test("it throws an exception if fill argument not passed to function or is not an number", () => {
+    expect(() => {
+      createMatrix(n = 2);
+    }).toThrow("fill is required");
+
+    expect(() => {
+      createMatrix(n = 2, fill = ["ATSA"]);
+    }).toThrow("an argument type String is required");
+
+    expect(() => {
+      createMatrix(n = 2, fill = true);
+    }).toThrow("an argument type String is required");
+
+    expect(() => {
+      createMatrix(n = 2, fill = 3);
+    }).toThrow("an argument type String is required");
+
+    expect(() => {
+      createMatrix(n = 2, fill = {"andy" : true });
+    }).toThrow("an argument type String is required");
+  });
 });
 
 describe("areWeCovered", () => {

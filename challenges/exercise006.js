@@ -69,7 +69,9 @@ const isItPrime = n => {
  */
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
+  if (typeof n !== 'number') throw new Error("an argument type number is required");
   if (fill === undefined) throw new Error("fill is required");
+  if (typeof fill !== 'string') throw new Error("an argument type String is required");
   let result = [];
   for (let i = 0; i < n; i++) {
     result[i] = [];
