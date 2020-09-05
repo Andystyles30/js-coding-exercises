@@ -249,4 +249,49 @@ describe("areWeCovered", () => {
     ];
     expect(areWeCovered(staff, "Wednesday")).toBe(false);
   });
+  test("it returns true if there are staff and 3 shceduled to work", () => {
+    const staff = [
+      { name: "john", rota: ["Monday", "Tuesday"] },
+      { name: "paul", rota: ["Monday", "Tuesday", "Wednesday"] },
+      { name: "andy", rota: ["Monday", "Tuesday", "Wednesday"] },
+      { name: "gary", rota: ["Monday", "Tuesday", "Wednesday"] }
+    ];
+    expect(areWeCovered(staff, "Wednesday")).toBe(true);
+  });
+  test("it returns false if empty rota array", () => {
+    const staff = [
+      { name: "john", rota: [] },
+      { name: "paul", rota: [] },
+      { name: "andy", rota: [] },
+      { name: "gary", rota: [] }
+    ];
+    expect(areWeCovered(staff, "Wednesday")).toBe(false);
+  });
+  test("it ignores case", () => {
+    const staff = [
+      { name: "john", rota: ["Monday", "Tuesday"] },
+      { name: "paul", rota: ["Monday", "Tuesday", "Wednesday"] },
+      { name: "andy", rota: ["Monday", "Tuesday", "Wednesday"] },
+      { name: "gary", rota: ["Monday", "Tuesday", "Wednesday"] }
+    ];
+    expect(areWeCovered(staff, "tuesday")).toBe(true);
+  });
+  test("it throws an exception if staff argument not passed to function or is not an object", () => {
+    expect(() => {
+      areWeCovered();
+    }).toThrow("staff is required");
+
+    expect(() => {
+      areWeCovered(staff = 1, day = "Monday");
+    }).toThrow("an argument type object is required for staff");
+  });
+  test("it throws an exception if day argument not passed to function or is not an number", () => {
+    expect(() => {
+      areWeCovered(staff={});
+    }).toThrow("day is required");
+
+    expect(() => {
+      areWeCovered(staff = {}, day = ["ATSA"]);
+    }).toThrow("an argument type String is required for day");
+  });
 });

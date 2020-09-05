@@ -96,8 +96,10 @@ const createMatrix = (n, fill) => {
  */
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
+  if (typeof staff !== 'object') throw new Error("an argument type object is required for staff");
   if (day === undefined) throw new Error("day is required");
-  const total = staff.reduce((total, staff) => total += staff.rota.find(element => element === day) ? 1 : 0, 0);
+  if (typeof day !== 'string') throw new Error("an argument type String is required for day");
+  const total = staff.reduce((total, staff) => total += staff.rota.find(element => element.toUpperCase() === day.toUpperCase()) ? 1 : 0, 0);
   return total >= 3;
 };
 
