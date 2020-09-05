@@ -192,19 +192,19 @@ describe("createMatrix", () => {
     }).toThrow("n is required");
 
     expect(() => {
-      createMatrix(n = ["ATSA"], fill = "andy");
+      createMatrix(["ATSA"], "andy");
     }).toThrow("an argument type number is required");
 
     expect(() => {
-      createMatrix(n = true, fill = "andy");
+      createMatrix(true, "andy");
     }).toThrow("an argument type number is required");
 
     expect(() => {
-      createMatrix(n = "ANDY", fill = "andy");
+      createMatrix("ANDY", "andy");
     }).toThrow("an argument type number is required");
 
     expect(() => {
-      createMatrix(n = { "DNA" : "ACTG" }, fill = "andy");
+      createMatrix({ "DNA" : "ACTG" }, "andy");
     }).toThrow("an argument type number is required");
   });
   test("it throws an exception if fill argument not passed to function or is not an number", () => {
@@ -213,19 +213,19 @@ describe("createMatrix", () => {
     }).toThrow("fill is required");
 
     expect(() => {
-      createMatrix(n = 2, fill = ["ATSA"]);
+      createMatrix(2, ["ATSA"]);
     }).toThrow("an argument type String is required");
 
     expect(() => {
-      createMatrix(n = 2, fill = true);
+      createMatrix(2, true);
     }).toThrow("an argument type String is required");
 
     expect(() => {
-      createMatrix(n = 2, fill = 3);
+      createMatrix(2, 3);
     }).toThrow("an argument type String is required");
 
     expect(() => {
-      createMatrix(n = 2, fill = {"andy" : true });
+      createMatrix(2, {"andy" : true });
     }).toThrow("an argument type String is required");
   });
 });
@@ -282,16 +282,16 @@ describe("areWeCovered", () => {
     }).toThrow("staff is required");
 
     expect(() => {
-      areWeCovered(staff = 1, day = "Monday");
+      areWeCovered(1, "Monday");
     }).toThrow("an argument type object is required for staff");
   });
   test("it throws an exception if day argument not passed to function or is not an number", () => {
     expect(() => {
-      areWeCovered(staff={});
+      areWeCovered({});
     }).toThrow("day is required");
 
     expect(() => {
-      areWeCovered(staff = {}, day = ["ATSA"]);
+      areWeCovered({}, ["ATSA"]);
     }).toThrow("an argument type String is required for day");
   });
 });
