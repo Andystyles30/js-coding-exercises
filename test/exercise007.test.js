@@ -13,6 +13,26 @@ describe("sumDigits", () => {
     expect(sumDigits(45)).toBe(9);
     expect(sumDigits(1234)).toBe(10);
   });
+
+  test("it throws an exception if n argument not passed to function or is not a number", () => {
+    expect(() => {
+      sumDigits();
+    }).toThrow("n is required");
+
+    expect(() => {
+      sumDigits("foo");
+    }).toThrow("type number is required for n");
+
+    expect(() => {
+      sumDigits(true);
+    }).toThrow("type number is required for n");
+  });
+
+  test("it throws an exception if n argument not passed to function is less than 0", () => {
+    expect(() => {
+      sumDigits(-10);
+    }).toThrow("n must be greater than 0");
+  });
 });
 
 describe("createRange", () => {

@@ -4,6 +4,8 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  if (typeof n !== 'number') throw new Error("type number is required for n");
+  if (n < 0) throw new Error("n must be greater than 0");
   return n.toString().split("").reduce((total, number) => total += parseFloat(number), 0);
 };
 
