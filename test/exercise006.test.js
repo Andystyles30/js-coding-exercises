@@ -63,6 +63,24 @@ describe("isValidDNA", () => {
   test("returns false if empty string", () => {
     expect(isValidDNA("")).toBe(false);
   });
+
+  test("it throws an exception if string argument not passed to function or is not an string", () => {
+    expect(() => {
+      isValidDNA();
+    }).toThrow("str is required");
+
+    expect(() => {
+      isValidDNA(["ATSA"]);
+    }).toThrow("an argument type String is required");
+
+    expect(() => {
+      isValidDNA(1);
+    }).toThrow("an argument type String is required");
+
+    expect(() => {
+      isValidDNA(-10088);
+    }).toThrow("an argument type String is required");
+  });
 });
 
 describe("getComplementaryDNA", () => {
