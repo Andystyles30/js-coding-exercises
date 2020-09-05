@@ -133,6 +133,34 @@ describe("isItPrime", () => {
     expect(isItPrime(8)).toBe(false);
     expect(isItPrime(9)).toBe(false);
   });
+  test("it returns false for numbers less than 1", () => {
+    expect(isItPrime(0)).toBe(false);
+    expect(isItPrime(-4)).toBe(false);
+    expect(isItPrime(-8)).toBe(false);
+    expect(isItPrime(-98787)).toBe(false);
+  });
+
+  test("it throws an exception if n argument not passed to function or is not an number", () => {
+    expect(() => {
+      isItPrime();
+    }).toThrow("n is required");
+
+    expect(() => {
+      isItPrime(["ATSA"]);
+    }).toThrow("an argument type number is required");
+
+    expect(() => {
+      isItPrime(true);
+    }).toThrow("an argument type number is required");
+
+    expect(() => {
+      isItPrime("ANDY");
+    }).toThrow("an argument type number is required");
+
+    expect(() => {
+      isItPrime({ "DNA" : "ACTG" });
+    }).toThrow("an argument type number is required");
+  });
 });
 
 describe("createMatrix", () => {
