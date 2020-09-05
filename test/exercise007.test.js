@@ -178,6 +178,11 @@ describe("hexToRGB", () => {
   test("returns correct RGB code object for red, green and blue keys from a hex code string input", () => {
     expect(hexToRGB("#FF1133")).toEqual("rgb(255,17,51)");
   });
+  test("it throws an exception if hexStr argument not passed", () => {
+    expect(() => {
+      hexToRGB();
+    }).toThrow("hexStr is required");
+  });
 });
 
 describe("findWinner", () => {
@@ -188,5 +193,35 @@ describe("findWinner", () => {
       ["X", null, "0"]
     ];
     expect(findWinner(board)).toEqual("X");
+  });
+  test("returns correct winner given the board results in array of arrays format", () => {
+    const board = [
+      ["0", "X", null],
+      ["X", "0", null],
+      ["X", null, "0"]
+    ];
+    expect(findWinner(board)).toEqual("0");
+  });
+  test("returns null when there is no winner", () => {
+    const board = [
+      ["0", "X", null],
+      ["X", null, "0"],
+      ["X", null, "0"]
+    ];
+    expect(findWinner(board)).toEqual(null);
+  });
+  test("returns null when the board is an empty array", () => {
+    const board = [];
+    expect(findWinner(board)).toEqual(null);
+  });
+  test("it throws an exception if board argument not passed", () => {
+    expect(() => {
+      findWinner();
+    }).toThrow("board is required");
+  });
+  test("it throws an exception if board argument not an object", () => {
+    expect(() => {
+      findWinner(1);
+    }).toThrow("board argument should be an object (array)");
   });
 });

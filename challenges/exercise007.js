@@ -103,6 +103,7 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+  if (typeof board !== 'object') throw new Error("board argument should be an object (array)");
   const winningCombos = [
     [1, 2, 3],
     [4, 5, 6],
