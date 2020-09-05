@@ -114,6 +114,64 @@ describe("getScreentimeAlertList", () => {
     ];
     expect(getScreentimeAlertList(users, "2019-05-04")).toEqual(["beth_1234"]);
   });
+
+  test("returns an array of the usernames of userswhen there is more than one result", () => {
+    const users = [
+      {
+        username: "JB_123478",
+        name: "Joe Bloggs",
+        screenTime: [
+          { date: "2019-05-01", usage: { twitter: 50, instagram: 22, facebook: 40 } },
+          { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31 } },
+          { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19 } },
+          { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61 } },
+          { date: "2019-06-11", usage: { mapMyRun: 69, whatsApp: 30, facebook: 6, safari: 0 } },
+        ]
+      },
+      {
+        username: "tim_b_1981",
+        name: "Tim Bean",
+        screenTime: [
+          { date: "2019-06-11", usage: { mapMyRun: 100, whatsApp: 200, facebook: 0, safari: 10 } },
+          { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16 } },
+          { date: "2019-06-04", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31 } },
+        ]
+      },
+      {
+        username: "james_b_1987",
+        name: "James Bond",
+        screenTime: [
+          { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 10, facebook: 0, safari: 10 } },
+          { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16 } },
+          { date: "2019-06-04", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31 } },
+        ]
+      },
+    ];
+    expect(getScreentimeAlertList(users, "2019-06-11")).toEqual([
+      "JB_123478",
+      "tim_b_1981",
+    ]);
+  });
+  test("it throws an exception if user argument passed to function is not an object", () => {
+    expect(() => {
+      getScreentimeAlertList(2, "2019-01-06");
+    }).toThrow("users is required and must be an object");
+  });
+  test("it throws an exception if user argument not passed", () => {
+    expect(() => {
+      getScreentimeAlertList();
+    }).toThrow("users is required and must be an object");
+  });
+  test("it throws an exception if date argument passed to function is not a string", () => {
+    expect(() => {
+      getScreentimeAlertList({}, true);
+    }).toThrow("date is required and must be a string in the format 2019-05-04");
+  });
+  test("it throws an exception if date argument not passed", () => {
+    expect(() => {
+      getScreentimeAlertList({});
+    }).toThrow("date is required and must be a string in the format 2019-05-04");
+  });
 });
 
 describe("hexToRGB", () => {

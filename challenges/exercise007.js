@@ -59,8 +59,8 @@ const createRange = (start, end, step) => {
  * @param {Array} users
  */
 const getScreentimeAlertList = (users, date) => {
-  if (users === undefined) throw new Error("users is required");
-  if (date === undefined) throw new Error("date is required");
+  if (users === undefined || typeof users !== 'object') throw new Error("users is required and must be an object");
+  if (date === undefined || typeof date !== 'string') throw new Error("date is required and must be a string in the format 2019-05-04");
   let usersOverScreentimeLimit = [];
   users.forEach(user => {
     user.screenTime.forEach(number => {
