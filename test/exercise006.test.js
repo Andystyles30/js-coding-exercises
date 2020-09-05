@@ -209,7 +209,7 @@ describe("createMatrix", () => {
   });
   test("it throws an exception if fill argument not passed to function or is not an number", () => {
     expect(() => {
-      createMatrix(n = 2);
+      createMatrix(2);
     }).toThrow("fill is required");
 
     expect(() => {
