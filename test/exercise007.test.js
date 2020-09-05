@@ -28,7 +28,7 @@ describe("sumDigits", () => {
     }).toThrow("type number is required for n");
   });
 
-  test("it throws an exception if n argument not passed to function is less than 0", () => {
+  test("it throws an exception if n argument passed to function is less than 0", () => {
     expect(() => {
       sumDigits(-10);
     }).toThrow("n must be greater than 0");
@@ -41,13 +41,51 @@ describe("createRange", () => {
     expect(createRange(2, 50, 5)).toEqual([2, 7, 12, 17, 22, 27, 32, 37, 42, 47]);
     expect(createRange(0, 30, 6)).toEqual([0, 6, 12, 18, 24, 30]);
   });
-});
 
-describe("createRange", () => {
-  test("it returns the correct array results", () => {
-    expect(createRange(3, 11, 2)).toEqual([3, 5, 7, 9, 11]);
-    expect(createRange(2, 50, 5)).toEqual([2, 7, 12, 17, 22, 27, 32, 37, 42, 47]);
-    expect(createRange(0, 30, 6)).toEqual([0, 6, 12, 18, 24, 30]);
+  test("it throws an exception if start argument not passed to function or is not a number", () => {
+    expect(() => {
+      createRange();
+    }).toThrow("start is required");
+
+    expect(() => {
+      createRange({}, 11, 2);
+    }).toThrow("type number is required for all arguments");
+
+    expect(() => {
+      createRange(true, 11, 2);
+    }).toThrow("type number is required for all arguments");
+  });
+
+  test("it throws an exception if step argument not passed to function or is not a number", () => {
+    expect(() => {
+      createRange(1,6);
+    }).toThrow("type number is required for all arguments");
+
+    expect(() => {
+      createRange(1, {}, 2);
+    }).toThrow("type number is required for all arguments");
+
+    expect(() => {
+      createRange(1, true, 2);
+    }).toThrow("type number is required for all arguments");
+  });
+
+  test("it throws an exception if end and step arguments not passed to function or is not a number", () => {
+    expect(() => {
+      createRange(1);
+    }).toThrow("end is required");
+  });
+
+  test("it throws an exception if any argument passed to function is less than 0", () => {
+    expect(() => {
+      createRange(-10, 10, 2);
+    }).toThrow("arguments must be greater than 0");
+    expect(() => {
+      createRange(10, -10, 2);
+    }).toThrow("arguments must be greater than 0");
+    expect(() => {
+      createRange(10, 10, -2);
+    }).toThrow("arguments must be greater than 0");
   });
 });
 

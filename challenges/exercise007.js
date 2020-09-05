@@ -20,6 +20,8 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  if (typeof start !== 'number' || typeof end !== 'number' || typeof step !== 'number' ) throw new Error("type number is required for all arguments");
+  if (start < 0 || end < 0 || step < 0) throw new Error("arguments must be greater than 0");
   let result = [];
   for (let number = start; number <= end; number += step) {
     result.push(number !== end ? number : end);
