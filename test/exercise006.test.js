@@ -89,6 +89,34 @@ describe("getComplementaryDNA", () => {
     expect(getComplementaryDNA("CGTA")).toBe("GCAT");
     expect(getComplementaryDNA("TACG")).toBe("ATGC");
   });
+
+  test("ignores case", () => {
+    expect(getComplementaryDNA("AcTG")).toBe("TGAC");
+    expect(getComplementaryDNA("CGTa")).toBe("GCAT");
+    expect(getComplementaryDNA("TAcG")).toBe("ATGC");
+  });
+
+  test("it throws an exception if string argument not passed to function or is not an string", () => {
+    expect(() => {
+      getComplementaryDNA();
+    }).toThrow("str is required");
+
+    expect(() => {
+      getComplementaryDNA(["ATSA"]);
+    }).toThrow("an argument type String is required");
+
+    expect(() => {
+      getComplementaryDNA(1);
+    }).toThrow("an argument type String is required");
+
+    expect(() => {
+      getComplementaryDNA(-10088);
+    }).toThrow("an argument type String is required");
+
+    expect(() => {
+      getComplementaryDNA({ "DNA" : "ACTG" });
+    }).toThrow("an argument type String is required");
+  });
 });
 
 describe("isItPrime", () => {

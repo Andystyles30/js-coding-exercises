@@ -30,13 +30,14 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  if (typeof str !== 'string') throw new Error("an argument type String is required");
   const dnaPairs = {
     "A": "T",
     "C": "G",
     "T": "A",
     "G": "C"
   }
-  return str.split("").map(letter => dnaPairs[letter]).join("");
+  return str.split("").map(letter => dnaPairs[letter.toUpperCase()]).join("");
 };
 
 /**
